@@ -21,7 +21,10 @@
     "@angular/platform-browser": "~10.1.3",
     "@angular/platform-browser-dynamic": "~10.1.3",
     "@angular/router": "~10.1.3",
+<<<<<<< HEAD
     "angular-notifier": "^6.0.1",
+=======
+>>>>>>> 4e7e17100d27fa25b5b9df50c0c843f032421d12
     "feather-icons": "^4.28.0",
     "moment": "^2.29.1",
     "ngx-progressbar": "^6.0.3",

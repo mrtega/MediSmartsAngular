@@ -4,7 +4,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 import { AuthService } from './../Service/auth.service';
-import { NotifierService } from 'angular-notifier';
 import { UserService } from './../Service/user.service';
 import { DataService } from '../Service/data.service';
 
@@ -20,7 +19,7 @@ export class LoginComponent implements OnInit {
   errors: Array<object> =[];
 
   constructor(private data: DataService, private authService: AuthService, private router: Router,
-              private notifier: NotifierService, private user: UserService) { }
+              private user: UserService) { }
 
   ngOnInit(): void {
     this.formInit();
@@ -40,24 +39,14 @@ export class LoginComponent implements OnInit {
     this.data.login(this.form.value).subscribe(
       (val) => {
         this.authService.login(val);
-        this.showSuccessNotification('Login Successful');
         this.router.navigate(['/']);
       },
       (response: HttpErrorResponse) => {
         this.form.reset();
         this.errors.length = 0;
         this.errors.push(response);
-        this.showErrorNotification('Invalid Credentials');
       }
     )
-  }
-
-  public showSuccessNotification(message: string): void {
-    this.notifier.notify('success', message);
-  }
-
-  public showErrorNotification(message: string): void {
-    this.notifier.notify('error', message);
   }
 
 }
