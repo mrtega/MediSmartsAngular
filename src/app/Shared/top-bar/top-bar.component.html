@@ -1,0 +1,18 @@
+<div class="bar" #topbar>
+  <a class="shad">
+    <i data-feather="bell" color="" ></i>
+  </a>
+  <a (click)="toggleDisplay()" class="user-link">
+    <div class="shad">
+      <i data-feather="user" color="" ></i>
+    </div>
+    <div class="details shad shasss" [ngStyle]="{'display': isOpen? 'inline-block' : 'none'}">
+      <ul>
+        <li>
+          <a (click)="logout()">Logout</a>
+        </li>
+        <li><a [routerLink]="['/profile/view']" >Profile</a></li>
+      </ul>
+    </div>
+  </a>
+</div>

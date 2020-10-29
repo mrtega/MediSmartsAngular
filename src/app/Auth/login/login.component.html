@@ -1,0 +1,64 @@
+<div class="login">
+  <div class="welc">
+    Welcome Back,
+  </div>
+  <div class="text">
+    Please Login to your Account
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="onLogin()">
+    <div class="field">
+      <label class="label" for="email">Email Address</label>
+      <div class="control">
+        <input
+          formControlName="email"
+          id="email"
+          type="email"
+          autocomplete="on"
+          class="input"
+          placeholder="Email Address"
+        />
+      </div>
+      <p
+        class="help"
+        *ngIf="form.get('email').touched && !form.get('email').valid"
+      >
+        Please enter a valid email
+      </p>
+    </div>
+
+    <div class="field">
+      <label class="label" for="password">Password</label>
+      <div class="control">
+        <input
+          formControlName="password"
+          type="password"
+          id="password"
+          autocomplete="off"
+          class="input"
+          placeholder="Enter Password"
+        />
+      </div>
+      <p
+        class="help"
+        *ngIf="form.get('password').touched && !form.get('password').valid"
+      >
+        Please enter Password
+      </p>
+    </div>
+    <ng-template [ngIf]="errors.length > 0">
+      <div *ngFor="let items of errors">
+        <p class="help">{{ items }}</p>
+      </div>
+    </ng-template>
+
+    <button type="submit" class="button but" [disabled]="!form.valid">
+      Login
+    </button>
+    <div class="small-container">
+      <a [routerLink]="['/register']" class="small-text"
+        >Dont have an account?</a
+      >
+    </div>
+  </form>
+</div>
