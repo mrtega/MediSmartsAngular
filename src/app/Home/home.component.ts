@@ -1,5 +1,4 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import * as Feather from 'feather-icons';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +13,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    Feather.replace();
   }
 
 }

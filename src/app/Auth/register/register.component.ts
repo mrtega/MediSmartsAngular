@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../Service/auth.service';
 import { MyValidators } from './../Validators/Validators';
 import { Router } from '@angular/router';
-import { NotifierService } from 'angular-notifier';
 import { DataService } from '../Service/data.service';
 import {  HttpClient } from '@angular/common/http';
 
@@ -18,7 +17,7 @@ export class RegisterComponent implements OnInit {
   isUsed: string = null;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router,
-    private notifier: NotifierService, private data: DataService, private http: HttpClient) { }
+, private data: DataService, private http: HttpClient) { }
 
   ngOnInit(): void {
     if (this.authService.isLoggedIn()) {
@@ -45,23 +44,10 @@ export class RegisterComponent implements OnInit {
       (val => {
         this.form.reset();
         this.authService.login(val);
-        this.showSuccessNotification('Registration Successful');
         this.router.navigate(['/']);
       }),
       ((error: string ) => {
-        this.showErrorNotification(error);
       })
     );
   }
-
-  public showSuccessNotification(message: string): void {
-    this.notifier.notify('success', message);
-  }
-
-  public showErrorNotification(message: string): void {
-    this.notifier.notify('error', message);
-  }
-
-
-
 }

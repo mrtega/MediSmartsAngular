@@ -6,7 +6,7 @@ import { AuthGuard } from '../Shared/Guards/auth.guard';
 const routes: Routes = [
   {
     path: '', component: HomeComponent, canActivateChild: [AuthGuard], children: [
-      {path: 'profile', loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)}
+      // {path: 'profile', loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)}
   ]}
 ];
 
